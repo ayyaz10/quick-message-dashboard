@@ -4,10 +4,6 @@
   "version": "1.0.0",
   "description": "Another extension",
   "action": {
-    "default_title": "Quick Message Dashboard",
-    "default_popup": "popup.html"
-  },
-  "chrome_url_overrides": {
-    "newtab": "newTab.html"
+    "default_title": "Quick Message Dashboard"
   }
 }
