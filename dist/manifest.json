@@ -4,6 +4,11 @@
   "version": "1.0.0",
   "description": "Another extension",
   "action": {
+    "default_popup": "popup.html",
     "default_title": "Quick Message Dashboard"
+  },
+  "permissions": ["tabs"],
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
   }
 }

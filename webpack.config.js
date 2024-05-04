@@ -1,15 +1,26 @@
+// source: https://github.com/manshu/reactjs-chrome-extension
+
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
+const HtmlPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/test.tsx",
+  devtool: "cheap-module-source-map",
+  entry: {
+    popup: path.resolve("./src/popup/popup.tsx"),
+    newtab: path.resolve("./src/tabs/index.tsx"),
+  },
   module: {
     rules: [
       {
         use: "ts-loader",
         test: /\.tsx$/,
         exclude: /node_modules/,
+      },
+      {
+        use: ["style-loader", "css-loader"],
+        test: /\.css$/i,
       },
     ],
   },
@@ -19,11 +30,23 @@ module.exports = {
         { from: path.resolve("src/manifest.json"), to: path.resolve("dist") },
       ],
     }),
+    ...getHtmlPlugins(["popup", "newtab"]),
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    filename: "index.js",
+    filename: "[name].js",
   },
 };
+
+function getHtmlPlugins(chunks) {
+  return chunks.map(
+    (chunk) =>
+      new HtmlPlugin({
+        title: "React Extension",
+        filename: `${chunk}.html`,
+        chunks: [chunk],
+      })
+  );
+}
