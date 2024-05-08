@@ -5,11 +5,10 @@ const CopyPlugin = require("copy-webpack-plugin");
 const HtmlPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: "development",
-  devtool: "cheap-module-source-map",
   entry: {
     popup: path.resolve("src/popup/index.tsx"),
     newtab: path.resolve("src/tabs/index.tsx"),
+    background: path.resolve("src/background/background.tsx"),
     contentScript: path.resolve("src/contentScript/contentScript.tsx"),
   },
   module: {

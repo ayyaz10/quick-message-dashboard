@@ -3,15 +3,15 @@ import { createRoot } from "react-dom/client";
 import ContentScript from "./contentScript";
 
 function init() {
-  const appContainer = document.createElement("div");
-  document.body.appendChild(appContainer);
-  console.log(appContainer);
-  if (!appContainer) {
+  const appsContainer = document.createElement("div");
+  document.body.appendChild(appsContainer);
+  if (!appsContainer) {
     throw new Error("Can not find AppContainer");
   }
-  const root = createRoot(appContainer);
-  console.log(appContainer);
+  const root = createRoot(appsContainer);
   root.render(<ContentScript />);
 }
 
-init();
+window.onload = () => {
+  init();
+};

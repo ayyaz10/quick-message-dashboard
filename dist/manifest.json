@@ -3,10 +3,13 @@
   "name": "Quick Message Dashboard",
   "version": "1.0.0",
   "description": "Another extension",
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["contentScript.js"]
+      "js": ["./contentScript.js"]
     }
   ],
   "action": {
@@ -14,7 +17,7 @@
     "default_title": "Quick Message Dashboard",
     "default_icon": "icon.png"
   },
-  "permissions": ["tabs", "storage"],
+  "permissions": ["tabs", "storage", "bookmarks"],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   }
