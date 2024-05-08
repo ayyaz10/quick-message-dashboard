@@ -8,8 +8,9 @@ module.exports = {
   mode: "development",
   devtool: "cheap-module-source-map",
   entry: {
-    popup: path.resolve("./src/popup/popup.tsx"),
-    newtab: path.resolve("./src/tabs/index.tsx"),
+    popup: path.resolve("src/popup/index.tsx"),
+    newtab: path.resolve("src/tabs/index.tsx"),
+    contentScript: path.resolve("src/contentScript/contentScript.tsx"),
   },
   module: {
     rules: [
@@ -30,13 +31,20 @@ module.exports = {
         { from: path.resolve("src/manifest.json"), to: path.resolve("dist") },
       ],
     }),
-    ...getHtmlPlugins(["popup", "newtab"]),
+    ...getHtmlPlugins(["popup", "newtab", "contentScript"]),
   ],
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
     filename: "[name].js",
+  },
+  optimization: {
+    splitChunks: {
+      chunks(chunk) {
+        return chunk.name !== "contentScript";
+      },
+    },
   },
 };
 

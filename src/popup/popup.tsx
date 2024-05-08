@@ -1,13 +1,28 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
 import "./popup.css";
-const test = (
-  <div>
-    <h1>Hello world</h1>
-  </div>
-);
-
-const container = document.createElement("div");
-document.body.appendChild(container);
-const root = createRoot(container);
-root.render(test);
+function Popup() {
+  function handleInput() {
+    // chrome.storage.
+  }
+  return (
+    <div>
+      <main>
+        <header>
+          <ul>
+            <li>
+              <img src="/focuslist-logo.png" width="40" height="40" alt="" />
+            </li>
+            <li>handylist</li>
+          </ul>
+        </header>
+        <section>
+          <form action="">
+            <input type="checkbox" id="handyPopupCheckbox" />
+            <label htmlFor="handyPopupCheckbox">Enable HandyList Popup</label>
+          </form>
+        </section>
+      </main>
+    </div>
+  );
+}
+export default Popup;

@@ -7,10 +7,12 @@ function TaskCard() {
     return currentTimeInSeconds;
   }
 
-  const imgUrl = `https://www.robohash.org/${getTimeInSecondsSinceEpoch()}?set=set2&size=100x100`;
+  // const imgUrl = `https://www.robohash.org/${getTimeInSecondsSinceEpoch()}?set=set2&size=100x100`;
+  // chrome.storage.sync.set({ imgUrl });
+  console.log("hello world");
   return (
     <div className="card-container">
-      <img src={imgUrl} alt="" />
+      {/* <img src={imgUrl} alt="" /> */}
       <p className="name">Ayyaz</p>
       <p className="task-name">Task Name</p>
       <p className="task-description">
